@@ -2,10 +2,12 @@
 #include <stdio.h>
 
 int main(){
-    int validar, opc1;
+    int validar, opc1, opc2;
     struct Libro libros[10];
     int cont_Libros = 0;
 
+   do
+   {
     printf("Gestión de Biblioteca\n");
     printf("Puedes elegir entre las siguientes opciones:\n");
     printf("1. Agregar libro\n");
@@ -19,9 +21,8 @@ int main(){
     switch (opc1)
     {
     case 1:
-        /* code */
+        Registro(&libros[cont_Libros], &cont_Libros);
         break;
-    
     case 2:
         /* code */
         break;  
@@ -41,5 +42,8 @@ int main(){
         break;
     }
 
+    scanf("%d", &opc2);
+   } while (opc2==1);
+   
     return 0;
 }

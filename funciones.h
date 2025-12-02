@@ -6,4 +6,6 @@ struct Libro
     int publicacion_año;
     char estado[20];
 };
-void validardatos(int x, void *y, char tipo)
+void validardatos(int x, void *y, char tipo);
+void BorrarSaltolinea(char *a);
+void Registro(struct Libro *a, int *cont);
