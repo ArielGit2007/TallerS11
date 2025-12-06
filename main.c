@@ -30,7 +30,7 @@ int main(){
         buscarLibro(libros, &cont_Libros);
         break;  
     case 4:
-        /* code */  
+        ModificarEstado(libros, &cont_Libros);
         break;
     case 5:
         /* code */
@@ -39,6 +39,7 @@ int main(){
         /* code */
         break;  
     default:
+        printf("Opcion no valida, por favor intente de nuevo.\n");
         break;
     }
 

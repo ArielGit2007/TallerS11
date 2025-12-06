@@ -153,3 +153,66 @@ void buscarLibro(struct Libro *a, int *cont){
         break;
     }
 }
+
+void ModificarEstado(struct Libro *a, int *cont){
+    int validar, IdBuscado, Encontrado=0, opc;
+    printf("Modificar estado del libro\n");
+    printf("Desea buscar el libro por su 1. Titulo 2. ID\n");
+    validar=scanf("%d", &opc);
+    validardatos(validar, &opc, 'i');
+    switch (opc)
+    {
+    case 1:
+        {
+            char tituloBuscado[100];
+            printf("Ingrese el titulo del libro a buscar:\n");
+            fgets(tituloBuscado, sizeof(tituloBuscado), stdin);
+            BorrarSaltolinea(tituloBuscado);
+            
+            for (int i = 0; i < (*cont); i++)
+            {
+                if(_stricmp(a[i].titulo, tituloBuscado) == 0)
+                {
+                    Encontrado=1;
+                    printf("Ingrese el nuevo estado del libro:\n");
+                    fgets(a[i].estado, sizeof(a[i].estado), stdin);
+                    BorrarSaltolinea(a[i].estado);
+                    printf("Estado del libro actualizado exitosamente.\n");
+                    break;
+                }
+
+            }
+            if (Encontrado==0)
+            {
+                printf("No se encontro el libro con el titulo proporcionado.\n");
+            }
+        }
+        break;
+    case 2:
+        {
+            printf("Ingrese el ID del libro a buscar:\n");
+            validar=scanf("%d", &IdBuscado);
+            validardatos(validar, &IdBuscado, 'i');
+            for (int i = 0; i < (*cont); i++)
+            {
+                if (a[i].id == IdBuscado)
+                {
+                    Encontrado=1;
+                    printf("Ingrese el nuevo estado del libro:\n");
+                    fgets(a[i].estado, sizeof(a[i].estado), stdin);
+                    BorrarSaltolinea(a[i].estado);
+                    printf("Estado del libro actualizado exitosamente.\n");
+                    break;
+                }
+            }
+            if (Encontrado==0)
+            {
+                printf("No se encontro el libro con el ID proporcionado.\n");
+            }
+        }
+        break;
+    default:
+        printf("Opcion no valida.\n");
+        break;
+    }
+}

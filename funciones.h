@@ -11,3 +11,4 @@ void BorrarSaltolinea(char *a);
 void Registro(struct Libro *a, int *cont);
 void mostarLibros(struct Libro *a, int *cont);
 void buscarLibro(struct Libro *a, int *cont);
+void ModificarEstado(struct Libro *a, int *cont);
