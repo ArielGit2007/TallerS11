@@ -8,11 +8,11 @@ int main(){
 
    do
    {
-    printf("Gestión de Biblioteca\n");
+    printf("Gestion de Biblioteca\n");
     printf("Puedes elegir entre las siguientes opciones:\n");
     printf("1. Agregar libro\n");
     printf("2. Mostrar libros\n");
-    printf("3. Buscar libro por título o ID \n");
+    printf("3. Buscar libro por titulo o ID \n");
     printf("4. Modificar estado del libro\n");
     printf("5. Editar datos del libro\n");
     printf("6. Eliminar libro\n");
@@ -24,10 +24,10 @@ int main(){
         Registro(&libros[cont_Libros], &cont_Libros);
         break;
     case 2:
-        /* code */
+        mostarLibros(libros, &cont_Libros);
         break;  
     case 3:
-        /* code */
+        buscarLibro(libros, &cont_Libros);
         break;  
     case 4:
         /* code */  
@@ -42,7 +42,10 @@ int main(){
         break;
     }
 
-    scanf("%d", &opc2);
+    
+    printf("Desea realizar otra operacion? 1.Si 2.No\n");
+    validar=scanf("%d", &opc2);
+    validardatos(validar, &opc2, 'i');
    } while (opc2==1);
    
     return 0;
