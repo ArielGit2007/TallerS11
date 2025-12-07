@@ -52,6 +52,7 @@ void validardatos(int x, void *y, char tipo)
 }
 void Registro(struct Libro *a, int *cont, struct Libro *libros)
 {
+    
     int validar;
     if ((*cont) < 10)
     {
@@ -94,6 +95,8 @@ void Registro(struct Libro *a, int *cont, struct Libro *libros)
         printf("Capacidad maxima de libros alcanzada.\n");
     }
 }
+ 
+
 void BorrarSaltolinea(char *a)
 {
     int len = strlen(a);
@@ -110,10 +113,10 @@ void mostarLibros(struct Libro *a, int *cont)
     }
     else
     {
-        printf("%-5s %-13s %-11s %-13s %-15s\n", "ID", "Titulo", "Anio Pub.", "Autor", "Estado");
+        printf("%-5s %-14s %-11s %-13s %-15s\n", "ID", "Titulo", "Anio Pub.", "Autor", "Estado");
         for (int i = 0; i < (*cont); i++)
         {
-            printf("%-5d %-13s %-11d %-13s %-15s\n", a[i].id, a[i].titulo, a[i].publicacion_año, a[i].autor, a[i].estado);
+            printf("%-5d %-14s %-11d %-13s %-15s\n", a[i].id, a[i].titulo, a[i].publicacion_año, a[i].autor, a[i].estado);
         }
     }
 }
