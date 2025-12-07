@@ -36,7 +36,7 @@ int main(){
         editardatoslibro(libros, &cont_Libros);
         break;
     case 6:
-        /* code */
+        eliminarlibro(libros, &cont_Libros);
         break;  
     default:
         printf("Opcion no valida, por favor intente de nuevo.\n");

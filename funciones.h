@@ -13,3 +13,4 @@ void mostarLibros(struct Libro *a, int *cont);
 void buscarLibro(struct Libro *a, int *cont);
 void ModificarEstado(struct Libro *a, int *cont);
 void editardatoslibro(struct Libro *a, int *cont);
+void eliminarlibro(struct Libro *a, int *cont);
