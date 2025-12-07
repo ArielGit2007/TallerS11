@@ -8,7 +8,8 @@ struct Libro
 };
 void validardatos(int x, void *y, char tipo);
 void BorrarSaltolinea(char *a);
-void Registro(struct Libro *a, int *cont);
+void Registro(struct Libro *a, int *cont, struct Libro *libros);
 void mostarLibros(struct Libro *a, int *cont);
 void buscarLibro(struct Libro *a, int *cont);
 void ModificarEstado(struct Libro *a, int *cont);
+void editardatoslibro(struct Libro *a, int *cont);

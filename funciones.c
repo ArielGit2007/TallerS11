@@ -47,7 +47,7 @@ void validardatos(int x, void *y, char tipo)
         }
     }
 }
-void Registro(struct Libro *a, int *cont)
+void Registro(struct Libro *a, int *cont, struct Libro *libros)
 {
     int validar;
    if ((*cont)<10)
@@ -56,7 +56,16 @@ void Registro(struct Libro *a, int *cont)
         printf("Ingrese el ID del libro: ");
         validar=scanf("%d", &a->id);
         validardatos(validar, &a->id, 'i');
-    } while (a->id >= 10000);
+        for (int i = 0; i < (*cont); i++)
+        {
+            if (a->id==libros[i].id)
+            {
+                printf("El ID ya existe. Ingrese un ID diferente.\n");
+                a->id = 10000; // Asigna un valor fuera del rango permitido para forzar la repeticion del ciclo
+            }    
+        }
+        
+    } while (a->id >= 10000 || a->id < 1000);
 
     printf("Ingrese el titulo del libro: ");
     fgets(a->titulo, sizeof(a->titulo), stdin);
@@ -174,6 +183,7 @@ void ModificarEstado(struct Libro *a, int *cont){
                 if(_stricmp(a[i].titulo, tituloBuscado) == 0)
                 {
                     Encontrado=1;
+                    printf("El estado del libro %s es: %s\n",a[i].titulo, a[i].estado);
                     printf("Ingrese el nuevo estado del libro:\n");
                     fgets(a[i].estado, sizeof(a[i].estado), stdin);
                     BorrarSaltolinea(a[i].estado);
@@ -198,6 +208,7 @@ void ModificarEstado(struct Libro *a, int *cont){
                 if (a[i].id == IdBuscado)
                 {
                     Encontrado=1;
+                    printf("El estado del libro %s es: %s\n",a[i].titulo, a[i].estado);
                     printf("Ingrese el nuevo estado del libro:\n");
                     fgets(a[i].estado, sizeof(a[i].estado), stdin);
                     BorrarSaltolinea(a[i].estado);
@@ -214,5 +225,59 @@ void ModificarEstado(struct Libro *a, int *cont){
     default:
         printf("Opcion no valida.\n");
         break;
+    }
+}
+
+void editardatoslibro(struct Libro *a, int *cont){
+    int validar, opc, IDBuscado, Encontrado=0;
+    printf("Editar datos del libro\n");
+    printf("Ingrese el ID del libro a editar:\n");
+    validar=scanf("%d", &IDBuscado);
+    validardatos(validar, &IDBuscado, 'i');
+    for (int i = 0; i < (*cont); i++)
+    {
+        if (a[i].id == IDBuscado)
+        {
+            Encontrado=1;
+            printf("Datos actuales del libro:\n");
+            printf("%-5s %-13s %-11s %-13s %-15s\n", "ID", "Titulo", "Anio Pub.", "Autor", "Estado");
+            printf("%-5d %-13s %-11d %-13s %-15s\n", a[i].id, a[i].titulo, a[i].publicacion_año, a[i].autor, a[i].estado);
+            
+            printf("Ingrese el dato que desea editar:\n");
+            printf("1.Titulo\n");
+            printf("2.Anio de publicacion\n");
+            printf("3.Autor\n");
+            validar=scanf("%d", &opc);
+            validardatos(validar, &opc, 'i');
+            switch (opc)
+            {
+            case 1:
+                printf("Ingrese el nuevo título del libro:\n");
+                fgets(a[i].titulo, sizeof(a[i].titulo), stdin);
+                BorrarSaltolinea(a[i].titulo);
+                break;
+            
+            case 2:
+                printf("Ingrese el nuevo anio de publicacion:\n");
+                validar = scanf("%d", &a[i].publicacion_año);
+                validardatos(validar, &a[i].publicacion_año, 'i');
+                break;
+
+            case 3:
+                printf("Ingrese el nuevo autor del libro:\n");
+                fgets(a[i].autor, sizeof(a[i].autor), stdin);
+                BorrarSaltolinea(a[i].autor);
+                break;
+
+            default:
+                break;
+            }
+            printf("Datos del libro actualizados exitosamente.\n");
+            break;
+        }
+        else
+        {
+            printf("No se encontro el libro con el ID proporcionado.\n");
+        }
     }
 }

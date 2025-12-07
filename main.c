@@ -21,7 +21,7 @@ int main(){
     switch (opc1)
     {
     case 1:
-        Registro(&libros[cont_Libros], &cont_Libros);
+        Registro(&libros[cont_Libros], &cont_Libros, libros);
         break;
     case 2:
         mostarLibros(libros, &cont_Libros);
@@ -33,7 +33,7 @@ int main(){
         ModificarEstado(libros, &cont_Libros);
         break;
     case 5:
-        /* code */
+        editardatoslibro(libros, &cont_Libros);
         break;
     case 6:
         /* code */
